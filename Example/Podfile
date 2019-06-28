@@ -1,6 +1,9 @@
+
+platform :osx, '10.12'
 use_frameworks!
 
 target 'Storage_Example' do
+  pod 'SQLiteORM', :path => '../../database'
   pod 'Storage', :path => '../'
 
   target 'Storage_Tests' do
