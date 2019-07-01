@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'Storage_Example' do
   pod 'SQLiteORM', :path => '../../database'
+  pod 'MMapKV', :path => '../../mmapkv'
   pod 'Storage', :path => '../'
 
   target 'Storage_Tests' do
