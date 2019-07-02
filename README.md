@@ -1,6 +1,6 @@
 # Storage
 
-[![CI Status](https://img.shields.io/travis/SecludedMoon/Storage.svg?style=flat)](https://travis-ci.org/SecludedMoon/Storage)
+[![CI Status](https://img.shields.io/travis/pozi119/Storage.svg?style=flat)](https://travis-ci.org/pozi119/Storage)
 [![Version](https://img.shields.io/cocoapods/v/Storage.svg?style=flat)](https://cocoapods.org/pods/Storage)
 [![License](https://img.shields.io/cocoapods/l/Storage.svg?style=flat)](https://cocoapods.org/pods/Storage)
 [![Platform](https://img.shields.io/cocoapods/p/Storage.svg?style=flat)](https://cocoapods.org/pods/Storage)
@@ -22,7 +22,7 @@ pod 'Storage'
 
 ## Author
 
-SecludedMoon, pozi119@163.com
+pozi119, pozi119@163.com
 
 ## License
 

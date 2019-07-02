@@ -7,10 +7,10 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/SecludedMoon/Storage'
+  s.homepage         = 'https://github.com/pozi119/Storage'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'SecludedMoon' => 'pozi119@163.com' }
-  s.source           = { :git => 'https://github.com/SecludedMoon/Storage.git', :tag => s.version.to_s }
+  s.author           = { 'Valo Lee' => 'pozi119@163.com' }
+  s.source           = { :git => 'https://github.com/pozi119/Storage.git', :tag => s.version.to_s }
 
   s.platform = :osx
   s.osx.deployment_target = "10.12"
