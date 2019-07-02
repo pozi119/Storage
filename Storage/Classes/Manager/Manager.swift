@@ -11,7 +11,7 @@ public struct Manager {
     static let shared = Manager()
     
     var orm: Orm {
-        return Orm(config: Config(Message.self))
+        return Orm(config: Config(DBModel.Message.self))
     }
     
 }
