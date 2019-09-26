@@ -9,9 +9,4 @@ import SQLiteORM
 
 public struct Manager {
     static let shared = Manager()
-    
-    var orm: Orm {
-        return Orm(config: Config(DBModel.Message.self))
-    }
-    
 }

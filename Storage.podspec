@@ -18,5 +18,6 @@ TODO: Add long description of the pod here.
   s.source_files = 'Storage/Classes/**/*'
   s.dependency 'SQLiteORM'
   s.dependency 'MMapKV'
+  s.dependency 'SwiftSignalKitMac'
 
 end
