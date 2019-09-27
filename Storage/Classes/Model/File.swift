@@ -1,6 +1,11 @@
 
 import Foundation
 
+/// reference to  Enigma_FileType in common_data.proto
+public enum FileType: Int, Storable {
+    case unknown = 0, photo, image, sticker, audio, video, document, patch
+}
+
 public struct File: Storable {
     public var id: String
     public var url: String
