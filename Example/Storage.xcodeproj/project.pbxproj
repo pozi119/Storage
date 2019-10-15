@@ -298,14 +298,12 @@
 				"${BUILT_PRODUCTS_DIR}/MMapKV/MMapKV.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLiteORM/SQLiteORM.framework",
 				"${BUILT_PRODUCTS_DIR}/Storage/Storage.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSignalKitMac/SwiftSignalKitMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMapKV.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLiteORM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Storage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSignalKitMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

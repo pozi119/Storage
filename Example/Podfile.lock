@@ -8,14 +8,11 @@ PODS:
   - Storage (0.1.0):
     - MMapKV
     - SQLiteORM
-    - SwiftSignalKitMac
-  - SwiftSignalKitMac (0.1.0)
 
 DEPENDENCIES:
   - MMapKV (from `../../mmapkv`)
   - SQLiteORM (from `../../database`)
   - Storage (from `../`)
-  - SwiftSignalKitMac (from `../../signal`)
 
 EXTERNAL SOURCES:
   MMapKV:
@@ -24,15 +21,12 @@ EXTERNAL SOURCES:
     :path: "../../database"
   Storage:
     :path: "../"
-  SwiftSignalKitMac:
-    :path: "../../signal"
 
 SPEC CHECKSUMS:
   MMapKV: c84829ac620d6d4144ea15fd22bdfcd3f20163e2
   SQLiteORM: a024663406a26b40bc17c7b95b3f5d1d26e7ca9f
-  Storage: 01026dab6a9cc0221bc94f9dc6d02b0722cb51e4
-  SwiftSignalKitMac: 206aa1666cc76224df8d5d32637d25bf7ce3da13
+  Storage: 08697aa9324cd99d8c3b585057b886d85e6356cb
 
-PODFILE CHECKSUM: 69df9c3174de6ef672004cfc077371cd9f8ea9c9
+PODFILE CHECKSUM: 6385ac063cd3eba25748d252fd62288455014750
 
 COCOAPODS: 1.8.3
