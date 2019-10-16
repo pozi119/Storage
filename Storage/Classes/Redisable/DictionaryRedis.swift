@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import MMapKV
-import SQLiteORM
 
 public protocol Dictionariable {
     associatedtype Key: Hashable & Comparable
@@ -19,12 +17,25 @@ public protocol Dictionariable {
 extension Dictionariable {
     // MARK: - set
 
-    public mutating func set<T: Equatable>(_ key: Key, value: T) -> Int {
-        guard let oldValue = self[key] as? T else { return -1 }
-        if oldValue == value { return 0 }
-        guard let newValue = value as? Value else { return -1 }
-        self[key] = newValue
+    public mutating func set(_ key: Key, value: Value) -> Int {
+        self[key] = value
         return 1
+    }
+
+    public mutating func set<T: Equatable>(_ key: Key, value: T) -> Int {
+        if let oldValue = self[key] as? T, oldValue == value {
+            return 0
+        }
+        if let newValue = value as? Value {
+            self[key] = newValue
+            return 1
+        }
+        return -1
+    }
+
+    public mutating func multiSet(_ keyValues: [Key: Value]) -> [Key: Value] {
+        keyValues.forEach { self[$0.key] = $0.value }
+        return keyValues
     }
 
     public mutating func multiSet<T: Equatable>(_ keyValues: [Key: T]) -> [Key: T] {
@@ -42,12 +53,12 @@ extension Dictionariable {
 
     // MARK: - get
 
-    public func get(_ key: Key) -> Any? {
+    public func get(_ key: Key) -> Value? {
         return self[key]
     }
 
-    public func multiGet(_ keys: [Key]) -> [Key: Any] {
-        var results: [Key: Any] = [:]
+    public func multiGet(_ keys: [Key]) -> [Key: Value] {
+        var results: [Key: Value] = [:]
         keys.forEach { results[$0] = self[$0] }
         return results
     }
@@ -78,35 +89,35 @@ extension Dictionariable {
                      upper: Key? = nil,
                      limit: Int? = nil,
                      bounds: Bounds,
-                     order desc: Bool = false) -> [(Key, Any)] {
+                     order desc: Bool = false) -> [(Key, Value)] {
         let _keys = keys(lower: lower, upper: upper, limit: limit, bounds: bounds, order: desc)
-        var results: [(Key, Any)] = []
+        var results: [(Key, Value)] = []
         _keys.forEach { results.append(($0, self[$0]!)) }
         return results
     }
 
-    public func round(_ center: Key?, lower: Int, upper: Int, order desc: Bool = false) -> [(Key, Any)] {
+    public func round(_ center: Key?, lower: Int, upper: Int, order desc: Bool = false) -> [(Key, Value)] {
         var _keys = keys(lower: center, limit: upper + 1, bounds: [.lower], order: false)
         if center != nil {
             _keys += keys(upper: center, limit: lower + 1, bounds: [], order: false)
         }
         _keys = desc ? _keys.sorted().reversed() : _keys.sorted()
         if desc { _keys = _keys.reversed() }
-        var results: [(Key, Any)] = []
+        var results: [(Key, Value)] = []
         _keys.forEach { results.append(($0, self[$0]!)) }
         return results
     }
 
     // MARK: - del
 
-    public mutating func del(_ key: Key) -> Any? {
+    public mutating func del(_ key: Key) -> Value? {
         let oldValue = self[key]
         self[key] = nil
         return oldValue
     }
 
-    public mutating func multiDel(_ keys: [Key]) -> [Key: Any] {
-        var results: [Key: Any] = [:]
+    public mutating func multiDel(_ keys: [Key]) -> [Key: Value] {
+        var results: [Key: Value] = [:]
         keys.forEach { key in
             results[key] = self[key]
             self[key] = nil
@@ -114,15 +125,3 @@ extension Dictionariable {
         return results
     }
 }
-
-extension Dictionary: Dictionariable where Key: Comparable {}
-
-extension MMapKV: Dictionariable {
-    public var keys: Dictionary<String, MMapable>.Keys {
-        return dictionary.keys
-    }
-}
-
-extension Dictionary: Redisable where Key: Comparable {}
-
-extension MMapKV: Redisable {}

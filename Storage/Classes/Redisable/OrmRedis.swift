@@ -49,22 +49,45 @@ extension Orm: Redisable {
         return condition
     }
 
-    public func set<T>(_ key: String, value: T) -> Int where T: Equatable {
-        guard let newValue = value as? Value, let conf = config as? PlainConfig else { return -1 }
-        let str = keyString(of: newValue, primaries: conf.primaries)
+    public func set(_ key: String, value: Value) -> Int {
+        guard let conf = config as? PlainConfig else { return -1 }
+        let str = keyString(of: value, primaries: conf.primaries)
         guard key == str else { return -1 }
-        let r = upsert(keyValues: newValue)
+        let r = upsert(keyValues: value)
         return r ? 1 : 0
     }
 
-    public func multiSet<T>(_ keyValues: [String: T]) -> [String: T] where T: Equatable {
+    public func set<T: Equatable>(_ key: String, value: T) -> Int {
+        if let oldValue = get(key) as? T, oldValue == value {
+            return 0
+        }
+        guard let newValue = value as? Value else { return -1 }
+        return set(key, value: newValue)
+    }
+
+    public func multiSet(_ keyValues: [String: Value]) -> [String: Value] {
+        guard let conf = config as? PlainConfig else { return [:] }
+        var multi: [[String: Binding]] = []
+        var result: [String: Value] = [:]
+        for (key, value) in keyValues {
+            let str = keyString(of: value, primaries: conf.primaries)
+            if key == str {
+                multi.append(value)
+                result[key] = value
+            }
+        }
+        let r = upsert(multiKeyValues: multi)
+        return r == multi.count ? result : [:]
+    }
+
+    public func multiSet<T: Equatable>(_ keyValues: [String: T]) -> [String: T] {
         guard let conf = config as? PlainConfig else { return [:] }
         var multi: [[String: Binding]] = []
         var result: [String: T] = [:]
         for (key, value) in keyValues {
             if let newValue = value as? Value {
                 let str = keyString(of: newValue, primaries: conf.primaries)
-                if key == str {
+                if key == str, let oldValue = get(key) as? T, oldValue != value {
                     multi.append(newValue)
                     result[key] = value
                 }
@@ -74,16 +97,16 @@ extension Orm: Redisable {
         return r == multi.count ? result : [:]
     }
 
-    public func get(_ key: String) -> Any? {
+    public func get(_ key: String) -> Value? {
         guard let conf = config as? PlainConfig,
             let dic = primaryKeyValue(of: key, primaries: conf.primaries),
             let condition = constraint(for: dic) else { return nil }
         return findOne(condition)
     }
 
-    public func multiGet(_ keys: [String]) -> [String: Any] {
+    public func multiGet(_ keys: [String]) -> [String: Value] {
         guard let conf = config as? PlainConfig else { return [:] }
-        var results: [String: Any] = [:]
+        var results: [String: Value] = [:]
         for key in keys {
             if let dic = primaryKeyValue(of: key, primaries: conf.primaries),
                 let condition = constraint(for: dic) {
@@ -117,7 +140,7 @@ extension Orm: Redisable {
                      upper: Key? = nil,
                      limit: Int? = nil,
                      bounds: Bounds,
-                     order desc: Bool = false) -> [(String, Any)] {
+                     order desc: Bool = false) -> [(String, Value)] {
         guard let conf = config as? PlainConfig,
             conf.primaries.count > 0,
             let condition = constraint(lower: lower, upper: upper, bounds: bounds, primaries: conf.primaries)
@@ -127,13 +150,13 @@ extension Orm: Redisable {
         return keyValues.map { (keyString(of: $0, primaries: conf.primaries), $0) }
     }
 
-    public func round(_ center: String?, lower: Int, upper: Int, order desc: Bool) -> [(String, Any)] {
+    public func round(_ center: String?, lower: Int, upper: Int, order desc: Bool) -> [(String, Value)] {
         let after = scan(lower: center, limit: upper, bounds: [.lower], order: desc)
-        let front: [(String, Any)] = center == nil ? [] : scan(upper: center, limit: lower, bounds: [], order: desc)
+        let front: [(String, Value)] = center == nil ? [] : scan(upper: center, limit: lower, bounds: [], order: desc)
         return desc ? after + front : front + after
     }
 
-    public func del(_ key: String) -> Any? {
+    public func del(_ key: String) -> Value? {
         guard let conf = config as? PlainConfig,
             let dic = primaryKeyValue(of: key, primaries: conf.primaries),
             let condition = constraint(for: dic) else { return nil }
@@ -142,9 +165,9 @@ extension Orm: Redisable {
         return result
     }
 
-    public func multiDel(_ keys: [String]) -> [String: Any] {
+    public func multiDel(_ keys: [String]) -> [String: Value] {
         guard let conf = config as? PlainConfig else { return [:] }
-        var results: [String: Any] = [:]
+        var results: [String: Value] = [:]
         for key in keys {
             if let dic = primaryKeyValue(of: key, primaries: conf.primaries),
                 let condition = constraint(for: dic) {
