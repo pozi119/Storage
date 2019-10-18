@@ -20,15 +20,15 @@ extension MMapKV: Dictionariable where Key: Comparable {
 
 extension MMapKV: Redisable where Key: Comparable {}
 
-open class Table<Cache: Redisable>: RedisStorable where Cache.Key == Orm.Key {
+open class Table<T: Codable, Cache: Redisable>: RedisStorable where Cache.Key == Orm<T>.Key {
     public typealias S = Orm
     public typealias C = Cache
 
-    public var storage: Orm
+    public var storage: Orm<T>
 
     public var cache: Cache
 
-    public required init(storage: Orm, cache: Cache) {
+    public required init(storage: Orm<T>, cache: Cache) {
         self.storage = storage
         self.cache = cache
     }
