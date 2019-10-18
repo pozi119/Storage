@@ -12,13 +12,13 @@ import SQLiteORM
 extension Dictionary: Dictionariable where Key: Comparable {}
 extension Dictionary: Redisable where Key: Comparable {}
 
-extension MMapKV: Dictionariable {
-    public var keys: Dictionary<String, MMapable>.Keys {
+extension MMapKV: Dictionariable where Key: Comparable {
+    public var keys: Dictionary<Key, Value>.Keys {
         return dictionary.keys
     }
 }
 
-extension MMapKV: Redisable {}
+extension MMapKV: Redisable where Key: Comparable {}
 
 open class Table<Cache: Redisable>: RedisStorable where Cache.Key == Orm.Key {
     public typealias S = Orm
