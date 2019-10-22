@@ -1,5 +1,6 @@
 PODS:
   - MMapKV (0.1.0)
+  - Redisable (0.1.0)
   - SQLiteORM (0.1.0-beta4):
     - SQLiteORM/system (= 0.1.0-beta4)
   - SQLiteORM/common (0.1.0-beta4)
@@ -7,16 +8,20 @@ PODS:
     - SQLiteORM/common
   - Storage (0.1.0):
     - MMapKV
+    - Redisable
     - SQLiteORM
 
 DEPENDENCIES:
   - MMapKV (from `../../mmapkv`)
+  - Redisable (from `../../Redisable`)
   - SQLiteORM (from `../../database`)
   - Storage (from `../`)
 
 EXTERNAL SOURCES:
   MMapKV:
     :path: "../../mmapkv"
+  Redisable:
+    :path: "../../Redisable"
   SQLiteORM:
     :path: "../../database"
   Storage:
@@ -24,9 +29,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MMapKV: c84829ac620d6d4144ea15fd22bdfcd3f20163e2
-  SQLiteORM: a024663406a26b40bc17c7b95b3f5d1d26e7ca9f
-  Storage: 08697aa9324cd99d8c3b585057b886d85e6356cb
+  Redisable: 3743b1e6814255d527e921a309685063eadc55f3
+  SQLiteORM: de08189eb5b33ab9c7e3adc9bc091040daea5fe3
+  Storage: 49ec35fd70028329f1895bc4b546b983f95d909e
 
-PODFILE CHECKSUM: 6385ac063cd3eba25748d252fd62288455014750
+PODFILE CHECKSUM: e0a9a58ef9ff447224cfaa30e8314d4b8b18fbad
 
 COCOAPODS: 1.8.3

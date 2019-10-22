@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Redisable
 import SQLiteORM
 
 private let separator = "||"

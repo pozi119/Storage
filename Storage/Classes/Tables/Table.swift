@@ -7,18 +7,19 @@
 
 import Foundation
 import MMapKV
+import Redisable
 import SQLiteORM
 
 extension Dictionary: Dictionariable where Key: Comparable {}
 extension Dictionary: Redisable where Key: Comparable {}
 
-extension MMapKV: Dictionariable where Key: Comparable {
+extension MMKV: Dictionariable where Key: Comparable {
     public var keys: Dictionary<Key, Value>.Keys {
         return dictionary.keys
     }
 }
 
-extension MMapKV: Redisable where Key: Comparable {}
+extension MMKV: Redisable where Key: Comparable {}
 
 open class Table<T: Codable, Cache: Redisable>: RedisStorable where Cache.Key == Orm<T>.Key {
     public typealias S = Orm

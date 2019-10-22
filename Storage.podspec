@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'A short description of Storage.'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+      TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/pozi119/Storage'
@@ -12,11 +12,14 @@ TODO: Add long description of the pod here.
   s.author           = { 'Valo Lee' => 'pozi119@163.com' }
   s.source           = { :git => 'https://github.com/pozi119/Storage.git', :tag => s.version.to_s }
 
-  s.platform = :osx
-  s.osx.deployment_target = "10.12"
+  s.ios.deployment_target = '10.0'
+  s.tvos.deployment_target = '10.0'
+  s.osx.deployment_target = '10.12'
+  s.watchos.deployment_target = '3.0'
 
   s.source_files = 'Storage/Classes/**/*'
   s.dependency 'SQLiteORM'
   s.dependency 'MMapKV'
+  s.dependency 'Redisable'
 
 end
