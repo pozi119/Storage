@@ -15,6 +15,11 @@ public struct FriendRequest: Storable {
 
 public struct User: Storable {
     public var id: Int64
+    public var phone: String
+    public var name: String
+    public var nick: String
+    public var remark: String
+    public var sign: String
     public var content: Data
     public var timestamp: Int64
 }

@@ -9,7 +9,8 @@ public struct DB {
         return Database(.uri(path))
     }()
 
-    private var dir: String
+    public var dir: String
+    public var id: String
 
     public lazy var coreDB: Database = {
         let path = (dir as NSString).appendingPathComponent("core.db")
@@ -40,6 +41,7 @@ public struct DB {
 
     public init(with id: String) {
         assert(id.count > 0, "invalid user id")
+        self.id = id
         let dirs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         dir = ((dirs.first ?? "") as NSString).appendingPathComponent(id)
     }

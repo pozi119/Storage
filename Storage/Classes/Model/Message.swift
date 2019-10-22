@@ -42,10 +42,3 @@ public struct Resource: Storable {
     public var thum_id: String
     public var file_id: String
 }
-
-public struct FtsMessage: Storable {
-    public var id: Int64
-    public var sender_id: Int64
-    public var send_time: Int64
-    public var content: String
-}

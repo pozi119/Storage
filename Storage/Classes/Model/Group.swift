@@ -10,6 +10,9 @@ public struct Group: Storable {
 public struct GroupMember: Storable {
     public var group_id: Int64
     public var user_id: Int64
+    public var username: String
+    public var userNick: String
+    public var groupNick: String
     public var content: Data
     public var timestamp: Int64
 }
