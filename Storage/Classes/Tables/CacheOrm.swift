@@ -21,7 +21,7 @@ extension MMKV: Dictionariable where Key: Comparable {
 
 extension MMKV: Redisable where Key: Comparable {}
 
-public final class MMKVOrm<T: Codable>: RedisStorable {
+public final class MMKVOrm<T: Codable & Equatable>: RedisStorable {
     public typealias S = Orm<T>
     public typealias C = MMKV<Orm<T>.Key, T>
 
@@ -35,7 +35,7 @@ public final class MMKVOrm<T: Codable>: RedisStorable {
     }
 }
 
-public final class DictionaryOrm<T: Codable>: RedisStorable {
+public final class DictionaryOrm<T: Codable & Equatable>: RedisStorable {
     public typealias S = Orm<T>
     public typealias C = Dictionary<Orm<T>.Key, T>
 

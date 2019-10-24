@@ -1,4 +1,4 @@
 
 import Foundation
 
-protocol Storable: Codable, Equatable {}
+typealias Storable = Codable & Equatable

@@ -29,7 +29,7 @@ public struct Table {
     private var messageOrms: [String: MMKVOrm<Message>] = [:]
     private var resourceOrms: [String: MMKVOrm<Resource>] = [:]
 
-    init(with id: String) {
+    public init(with id: String) {
         self.id = id
         db = DB(with: id)
     }
@@ -42,69 +42,69 @@ public struct Table {
 
     // MARK: coreDB
 
-    lazy var dialogKey: MMKVOrm<DialogKey> = {
+    public lazy var dialogKey: MMKVOrm<DialogKey> = {
         MMKVOrm("dialog_key_store", db: db.coreDB, primaries: ["dialog_id", "version"])
     }()
 
-    lazy var identityKey: MMKVOrm<SecretKey> = {
+    public lazy var identityKey: MMKVOrm<SecretKey> = {
         MMKVOrm("identity_key_store", db: db.coreDB, primaries: ["user_id", "device_id", "version"])
     }()
 
-    lazy var preKey: MMKVOrm<SecretKey> = {
+    public lazy var preKey: MMKVOrm<SecretKey> = {
         MMKVOrm("pre_key_store", db: db.coreDB, primaries: ["user_id", "device_id", "version"])
     }()
 
-    lazy var signedPreKey: MMKVOrm<SecretKey> = {
+    public lazy var signedPreKey: MMKVOrm<SecretKey> = {
         MMKVOrm("signed_pre_key_store", db: db.coreDB, primaries: ["user_id", "device_id", "version"])
     }()
 
-    lazy var sessionKey: MMKVOrm<SecretKey> = {
+    public lazy var sessionKey: MMKVOrm<SecretKey> = {
         MMKVOrm("session_key_store", db: db.coreDB, primaries: ["user_id", "device_id", "version"])
     }()
 
     // MARK: bufferDB
 
-    lazy var file: MMKVOrm<File> = {
+    public lazy var file: MMKVOrm<File> = {
         MMKVOrm("file", db: db.bufferDB, primaries: ["id"], uniques: ["md5"])
     }()
 
     // MARK: dataDB
 
-    lazy var dialog: MMKVOrm<Dialog> = {
+    public lazy var dialog: MMKVOrm<Dialog> = {
         MMKVOrm("dialog_info_store", db: db.dataDB, primaries: ["id"])
     }()
 
-    lazy var friendRequest: MMKVOrm<FriendRequest> = {
+    public lazy var friendRequest: MMKVOrm<FriendRequest> = {
         MMKVOrm("request_info_store", db: db.dataDB, primaries: ["user_id"])
     }()
 
-    lazy var user: MMKVOrm<User> = {
+    public lazy var user: MMKVOrm<User> = {
         MMKVOrm("user_info_store", db: db.dataDB, primaries: ["id"])
     }()
 
-    lazy var group: MMKVOrm<Group> = {
+    public lazy var group: MMKVOrm<Group> = {
         MMKVOrm("group_info_store", db: db.dataDB, primaries: ["id"])
     }()
 
-    lazy var groupMember: MMKVOrm<GroupMember> = {
+    public lazy var groupMember: MMKVOrm<GroupMember> = {
         MMKVOrm("group_member_info_store", db: db.dataDB, primaries: ["group_id", "user_id"])
     }()
 
-    lazy var stickerPacket: MMKVOrm<StickerPacket> = {
+    public lazy var stickerPacket: MMKVOrm<StickerPacket> = {
         MMKVOrm("stickers_info_store", db: db.dataDB, primaries: ["id"])
     }()
 
     // MARK: historyDB
 
-    lazy var unsentMessage: MMKVOrm<UnsentMessage> = {
+    public lazy var unsentMessage: MMKVOrm<UnsentMessage> = {
         MMKVOrm("unsend_message_store", db: db.historyDB, primaries: ["dialog_id", "message_id"])
     }()
 
-    lazy var recentEmoji: MMKVOrm<RecentEmoji> = {
+    public lazy var recentEmoji: MMKVOrm<RecentEmoji> = {
         MMKVOrm("recent_emoji_store", db: db.historyDB, primaries: ["unicode"])
     }()
 
-    lazy var recentSticker: MMKVOrm<RecentSticker> = {
+    public lazy var recentSticker: MMKVOrm<RecentSticker> = {
         MMKVOrm("recent_sticker_store", db: db.historyDB, primaries: ["packet_id", "file_id"])
     }()
 
@@ -130,7 +130,7 @@ public struct Table {
 
     // MARK: searchDB
 
-    lazy var ftsMessage: Orm<Message> = {
+    public lazy var ftsMessage: Orm<Message> = {
         let config = FtsConfig(Message.self)
         config.whites = ["id", "dialog_id", "send_time", "text"]
         config.indexes = ["text"]
@@ -138,7 +138,7 @@ public struct Table {
         return Orm<Message>(config: config, db: db.searchDB, table: "message_vtable")
     }()
 
-    lazy var ftsUser: Orm<User> = {
+    public lazy var ftsUser: Orm<User> = {
         let config = FtsConfig(User.self)
         config.whites = ["content", "timestamp"]
         config.indexes = ["phone", "name", "nick", "remark", "sign"]
@@ -146,7 +146,7 @@ public struct Table {
         return Orm<User>(config: config, db: db.searchDB, table: "user_vtable")
     }()
 
-    lazy var ftsGroupMember: Orm<GroupMember> = {
+    public lazy var ftsGroupMember: Orm<GroupMember> = {
         let config = FtsConfig(GroupMember.self)
         config.blacks = ["content", "timestamp"]
         config.indexes = ["username", "userNick", "groupNick"]

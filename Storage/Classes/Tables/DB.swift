@@ -44,5 +44,10 @@ public struct DB {
         self.id = id
         let dirs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         dir = ((dirs.first ?? "") as NSString).appendingPathComponent(id)
+        var isdir: ObjCBool = false
+        let exist = FileManager.default.fileExists(atPath: dir, isDirectory: &isdir)
+        if !exist || !isdir.boolValue {
+            try? FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: [:])
+        }
     }
 }
