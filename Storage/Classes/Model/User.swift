@@ -1,21 +1,23 @@
 
 import Foundation
 
-public struct FriendRequest: Storable {
+public extension FriendRequest {
     /// reference to  Enigma_ContactRequestState in common_data.proto
-    public enum State: Int, Storable {
+    enum State: Int, Storable {
         case pending = 0, read, accepted, refused, expired, deleted
     }
+}
 
+public struct FriendRequest: Storable {
     var user_id: Int64
     var state: State
     var content: Data
-    var timestamp: Int64
+    var timestamp: TimeInterval
 
     public init(user_id: Int64,
                 state: State,
                 content: Data,
-                timestamp: Int64) {
+                timestamp: TimeInterval) {
         self.user_id = user_id
         self.state = state
         self.content = content
@@ -31,7 +33,7 @@ public struct User: Storable {
     var remark: String
     var sign: String
     var content: Data
-    var timestamp: Int64
+    var timestamp: TimeInterval
 
     public init(id: Int64,
                 phone: String,
@@ -40,7 +42,7 @@ public struct User: Storable {
                 remark: String,
                 sign: String,
                 content: Data,
-                timestamp: Int64) {
+                timestamp: TimeInterval) {
         self.id = id
         self.phone = phone
         self.name = name

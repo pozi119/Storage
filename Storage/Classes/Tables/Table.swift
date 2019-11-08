@@ -123,7 +123,7 @@ public struct Table {
         }
         let _orm = MMKVOrm<Resource>("history_resource_store_" + dialogId,
                                      db: db.historyDB,
-                                     primaries: ["message_id", "sender_id"])
+                                     primaries: ["message_id", "file_id"])
         resourceOrms[dialogId] = _orm
         return _orm
     }

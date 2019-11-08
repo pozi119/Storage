@@ -4,11 +4,11 @@ import Foundation
 public struct Group: Storable {
     var id: Int64
     var content: Data
-    var timestamp: Int64
+    var timestamp: TimeInterval
 
     public init(id: Int64,
                 content: Data,
-                timestamp: Int64) {
+                timestamp: TimeInterval) {
         self.id = id
         self.content = content
         self.timestamp = timestamp
@@ -22,7 +22,7 @@ public struct GroupMember: Storable {
     var userNick: String
     var groupNick: String
     var content: Data
-    var timestamp: Int64
+    var timestamp: TimeInterval
 
     public init(group_id: Int64,
                 user_id: Int64,
@@ -30,7 +30,7 @@ public struct GroupMember: Storable {
                 userNick: String,
                 groupNick: String,
                 content: Data,
-                timestamp: Int64) {
+                timestamp: TimeInterval) {
         self.group_id = group_id
         self.user_id = user_id
         self.username = username
