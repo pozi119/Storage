@@ -4,8 +4,8 @@ use_frameworks!
 install! 'cocoapods', generate_multiple_pod_projects: true
 
 target 'Storage_Example' do
-  pod 'SQLiteORM', :path => '../../database'
-  pod 'MMapKV', :path => '../../mmapkv'
+  pod 'SQLiteORM', :path => '../../SQLiteORM'
+  pod 'MMapKV', :path => '../../MMapKV'
   pod 'Redisable', :path => '../../Redisable'
   pod 'Storage', :path => '../'
 

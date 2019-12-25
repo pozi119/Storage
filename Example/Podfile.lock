@@ -12,18 +12,18 @@ PODS:
     - SQLiteORM
 
 DEPENDENCIES:
-  - MMapKV (from `../../mmapkv`)
+  - MMapKV (from `../../MMapKV`)
   - Redisable (from `../../Redisable`)
-  - SQLiteORM (from `../../database`)
+  - SQLiteORM (from `../../SQLiteORM`)
   - Storage (from `../`)
 
 EXTERNAL SOURCES:
   MMapKV:
-    :path: "../../mmapkv"
+    :path: "../../MMapKV"
   Redisable:
     :path: "../../Redisable"
   SQLiteORM:
-    :path: "../../database"
+    :path: "../../SQLiteORM"
   Storage:
     :path: "../"
 
@@ -33,6 +33,6 @@ SPEC CHECKSUMS:
   SQLiteORM: de08189eb5b33ab9c7e3adc9bc091040daea5fe3
   Storage: 49ec35fd70028329f1895bc4b546b983f95d909e
 
-PODFILE CHECKSUM: b4dc5caa97678ca5f952ea9a757db1dfca977dcf
+PODFILE CHECKSUM: 78c31369e2989de59766f2b8b561977721aae82d
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
