@@ -10,16 +10,16 @@ import MMapKV
 import Redisable
 import SQLiteORM
 
-extension Dictionary: Dictionariable where Key: Comparable {}
-extension Dictionary: Redisable where Key: Comparable {}
+extension Dictionary: Dictionariable where Key: Comparable, Value: Equatable {}
+extension Dictionary: Redisable where Key: Comparable, Value: Equatable {}
 
-extension MMKV: Dictionariable where Key: Comparable {
+extension MMKV: Dictionariable where Key: Comparable, Value: Equatable {
     public var keys: Dictionary<Key, Value>.Keys {
         return dictionary.keys
     }
 }
 
-extension MMKV: Redisable where Key: Comparable {}
+extension MMKV: Redisable where Key: Comparable, Value: Equatable {}
 
 public final class MMKVOrm<T: Storable>: RedisStorable {
     public typealias Store = Orm<T>
