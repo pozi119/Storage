@@ -18,7 +18,7 @@ public extension MMKVOrm {
         config.uniques = uniques
         let orm: Orm = Orm<T>(config: config, db: db, table: name)
         let mmkv: MMKV<String, T> = MMKV("com.enigma.mmkv." + name, directory: dir)
-        self.init(storage: orm, cache: mmkv)
+        self.init(store: orm, cache: mmkv)
     }
 }
 

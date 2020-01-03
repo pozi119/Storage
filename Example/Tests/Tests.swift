@@ -16,7 +16,7 @@ class Tests: XCTestCase {
 
     func testSet() {
         let k = DialogKey(dialog_id: 2, version: 2, record: "record".data(using: .utf8)!)
-        let i = table.dialogKey.storage.keyValue(of: k)
+        let i = table.dialogKey.store.keyValue(of: k)
         let r = table.dialogKey.set(i.0, value: k)
         let s = table.dialogKey.get(i.0)
         XCTAssert(r >= 0)

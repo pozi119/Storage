@@ -21,30 +21,28 @@ extension MMKV: Dictionariable where Key: Comparable {
 
 extension MMKV: Redisable where Key: Comparable {}
 
-public final class MMKVOrm<T: Codable & Equatable>: RedisStorable {
-    public typealias S = Orm<T>
-    public typealias C = MMKV<Orm<T>.Key, T>
+public final class MMKVOrm<T: Storable>: RedisStorable {
+    public typealias Store = Orm<T>
+    public typealias Cache = MMKV<Orm<T>.Key, T>
 
-    public var storage: S
+    public var store: Store
+    public var cache: Cache
 
-    public var cache: C
-
-    public required init(storage: S, cache: C) {
-        self.storage = storage
+    public required init(store: Store, cache: Cache) {
+        self.store = store
         self.cache = cache
     }
 }
 
-public final class DictionaryOrm<T: Codable & Equatable>: RedisStorable {
-    public typealias S = Orm<T>
-    public typealias C = Dictionary<Orm<T>.Key, T>
+public final class DictionaryOrm<T: Storable>: RedisStorable {
+    public typealias Store = Orm<T>
+    public typealias Cache = Dictionary<Orm<T>.Key, T>
 
-    public var storage: S
+    public var store: Store
+    public var cache: Cache
 
-    public var cache: C
-
-    public required init(storage: S, cache: C) {
-        self.storage = storage
+    public required init(store: Store, cache: Cache) {
+        self.store = store
         self.cache = cache
     }
 }
