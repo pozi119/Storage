@@ -34,7 +34,7 @@ extension Orm: Redisable where T: Equatable {
 
     public func keyValue(of value: Value) -> (String, [String: Binding]) {
         let result: (String, [String: Binding]) = ("", [:])
-        guard let val = try? encoder.encode(value) as? [String: Binding],
+        guard let val = try? encoder.encode(value),
             let _key = val[redisableKey] else { return result }
         let key = String(describing: _key)
         return (key, val)

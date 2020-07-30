@@ -305,7 +305,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Storage_Example/Pods-Storage_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MMapKV/MMapKV.framework",
 				"${BUILT_PRODUCTS_DIR}/Redisable/Redisable.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLiteORM/SQLiteORM.framework",
 				"${BUILT_PRODUCTS_DIR}/Storage/Storage.framework",
 			);
@@ -313,7 +312,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMapKV.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Redisable.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLiteORM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Storage.framework",
 			);
