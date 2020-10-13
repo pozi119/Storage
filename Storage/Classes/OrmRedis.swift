@@ -34,7 +34,7 @@ extension Orm: Redisable where T: Equatable {
 
     public func keyValue(of value: Value) -> (String, [String: Binding]) {
         let result: (String, [String: Binding]) = ("", [:])
-        guard let val = try? encoder.encode(value),
+        guard let val = try? AnyEncoder.encode(value),
             let _key = val[redisableKey] else { return result }
         let key = String(describing: _key)
         return (key, val)
@@ -115,7 +115,7 @@ extension Orm: Redisable where T: Equatable {
         var results: [(String, Value)] = []
         for dic in items {
             let k = String(describing: dic[redisableKey] ?? "")
-            if let v = try? decoder.decode(T.self, from: dic) {
+            if let v = try? AnyDecoder.decode(T.self, from: dic) {
                 results.append((k, v))
             }
         }
