@@ -18,7 +18,7 @@ public extension MMKVOrm {
         config.primaries = primaries
         config.uniques = uniques
         let orm: Orm = Orm<T>(config: config, db: db, table: name)
-        let mmkv: MMKV<String, T> = MMKV("com.valo.mmkv." + name, directory: dir)
+        let mmkv: MMKV<String, T> = MMKV("com.valo.mmkv." + name, basedir: dir)
         self.init(store: orm, cache: mmkv)
     }
 }

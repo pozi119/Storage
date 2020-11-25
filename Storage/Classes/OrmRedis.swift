@@ -8,6 +8,7 @@
 import Foundation
 import Redisable
 import SQLiteORM
+import AnyCoder
 
 private let separator = "||"
 
@@ -32,8 +33,8 @@ extension Orm: Redisable where T: Equatable {
         return key
     }
 
-    public func keyValue(of value: Value) -> (String, [String: Binding]) {
-        let result: (String, [String: Binding]) = ("", [:])
+    public func keyValue(of value: Value) -> (String, [String: Primitive]) {
+        let result: (String, [String: Primitive]) = ("", [:])
         guard let val = try? AnyEncoder.encode(value),
             let _key = val[redisableKey] else { return result }
         let key = String(describing: _key)
@@ -64,7 +65,7 @@ extension Orm: Redisable where T: Equatable {
     }
 
     public func multiSet(_ keyValues: [String: Value]) -> [String: Value] {
-        var multi: [[String: Binding]] = []
+        var multi: [[String: Primitive]] = []
         var result: [String: Value] = [:]
         for (key, value) in keyValues {
             let (_key, _val) = keyValue(of: value)

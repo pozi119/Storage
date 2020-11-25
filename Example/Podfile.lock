@@ -1,28 +1,32 @@
 PODS:
-  - MMapKV (0.1.0)
+  - AnyCoder (0.1.0)
+  - MMapKV (0.1.0):
+    - AnyCoder
   - Redisable (0.1.0)
-  - SQLCipher (4.4.0):
-    - SQLCipher/standard (= 4.4.0)
-  - SQLCipher/common (4.4.0)
-  - SQLCipher/standard (4.4.0):
+  - SQLCipher (4.4.1):
+    - SQLCipher/standard (= 4.4.1)
+  - SQLCipher/common (4.4.1)
+  - SQLCipher/standard (4.4.1):
     - SQLCipher/common
-  - SQLiteORM (0.1.3):
-    - SQLiteORM/cipher (= 0.1.3)
-  - SQLiteORM/cipher (0.1.3):
+  - SQLiteORM (0.1.4-beta):
+    - SQLiteORM/cipher (= 0.1.4-beta)
+  - SQLiteORM/cipher (0.1.4-beta):
     - SQLCipher
     - SQLiteORM/core
     - SQLiteORM/fts
     - SQLiteORM/util
-  - SQLiteORM/core (0.1.3)
-  - SQLiteORM/fts (0.1.3):
+  - SQLiteORM/core (0.1.4-beta):
+    - AnyCoder
+  - SQLiteORM/fts (0.1.4-beta):
     - SQLiteORM/core
-  - SQLiteORM/util (0.1.3)
+  - SQLiteORM/util (0.1.4-beta)
   - Storage (0.1.0):
     - MMapKV
     - Redisable
     - SQLiteORM
 
 DEPENDENCIES:
+  - AnyCoder (from `../../AnyCoder`)
   - MMapKV (from `../../MMapKV`)
   - Redisable (from `../../Redisable`)
   - SQLiteORM (from `../../SQLiteORM`)
@@ -33,6 +37,8 @@ SPEC REPOS:
     - SQLCipher
 
 EXTERNAL SOURCES:
+  AnyCoder:
+    :path: "../../AnyCoder"
   MMapKV:
     :path: "../../MMapKV"
   Redisable:
@@ -43,12 +49,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MMapKV: c84829ac620d6d4144ea15fd22bdfcd3f20163e2
+  AnyCoder: 35670888672bd6dd81d39e65fee430e6233f283b
+  MMapKV: 3f450b7a5d744784f4073c8a4ddf3edd3e733c33
   Redisable: 3743b1e6814255d527e921a309685063eadc55f3
-  SQLCipher: e434ed542b24f38ea7b36468a13f9765e1b5c072
-  SQLiteORM: c89fd9a5b26c5663cca3905329b20f7446ff7fcb
+  SQLCipher: 0b81a39b21247c559c52c3bd2234808e626c008b
+  SQLiteORM: 9560a884cf1130e2a07fdf49175427c02b1513dc
   Storage: 49ec35fd70028329f1895bc4b546b983f95d909e
 
-PODFILE CHECKSUM: 51f6a1dc1e06a3887f5ac136eeaa250a6b39bde6
+PODFILE CHECKSUM: 3e9a28979aade5f798e8f96afe59c104720a993a
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
