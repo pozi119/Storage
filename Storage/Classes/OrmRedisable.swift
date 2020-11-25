@@ -1,14 +1,13 @@
 //
-//  OrmKeyValue.swift
+//  OrmRedisable.swift
 //  Storage
 //
 //  Created by Valo on 2019/10/12.
 //
 
-import Foundation
-import Redisable
-import SQLiteORM
 import AnyCoder
+import Foundation
+import SQLiteORM
 
 private let separator = "||"
 
@@ -36,7 +35,7 @@ extension Orm: Redisable where T: Equatable {
     public func keyValue(of value: Value) -> (String, [String: Primitive]) {
         let result: (String, [String: Primitive]) = ("", [:])
         guard let val = try? AnyEncoder.encode(value),
-            let _key = val[redisableKey] else { return result }
+              let _key = val[redisableKey] else { return result }
         let key = String(describing: _key)
         return (key, val)
     }

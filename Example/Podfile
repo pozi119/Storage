@@ -7,7 +7,6 @@ target 'Storage_Example' do
   pod 'AnyCoder', :path => '../../AnyCoder'
   pod 'SQLiteORM', :path => '../../SQLiteORM'
   pod 'MMapKV', :path => '../../MMapKV'
-  pod 'Redisable', :path => '../../Redisable'
   pod 'Storage', :path => '../'
 
   target 'Storage_Tests' do

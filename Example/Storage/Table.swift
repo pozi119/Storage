@@ -7,11 +7,10 @@
 
 import Foundation
 import MMapKV
-import Redisable
 import SQLiteORM
 import Storage
 
-public extension MMKVOrm {
+public extension Orm.MMKVStroage {
     convenience init(_ name: String, db: Database, primaries: [String], uniques: [String] = []) {
         let dir = (db.path as NSString).deletingLastPathComponent
         let config = PlainConfig(T.self)
@@ -30,5 +29,5 @@ public struct Table {
         return Database(.uri(path))
     }()
 
-    public static var user: MMKVOrm<User> = MMKVOrm("user", db: Table.db, primaries: ["id"])
+    public static var user = Orm<User>.MMKVStroage("user", db: Table.db, primaries: ["id"])
 }

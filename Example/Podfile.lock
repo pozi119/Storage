@@ -2,7 +2,6 @@ PODS:
   - AnyCoder (0.1.0)
   - MMapKV (0.1.0):
     - AnyCoder
-  - Redisable (0.1.0)
   - SQLCipher (4.4.1):
     - SQLCipher/standard (= 4.4.1)
   - SQLCipher/common (4.4.1)
@@ -22,13 +21,11 @@ PODS:
   - SQLiteORM/util (0.1.4-beta)
   - Storage (0.1.0):
     - MMapKV
-    - Redisable
     - SQLiteORM
 
 DEPENDENCIES:
   - AnyCoder (from `../../AnyCoder`)
   - MMapKV (from `../../MMapKV`)
-  - Redisable (from `../../Redisable`)
   - SQLiteORM (from `../../SQLiteORM`)
   - Storage (from `../`)
 
@@ -41,8 +38,6 @@ EXTERNAL SOURCES:
     :path: "../../AnyCoder"
   MMapKV:
     :path: "../../MMapKV"
-  Redisable:
-    :path: "../../Redisable"
   SQLiteORM:
     :path: "../../SQLiteORM"
   Storage:
@@ -51,11 +46,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AnyCoder: 35670888672bd6dd81d39e65fee430e6233f283b
   MMapKV: 3f450b7a5d744784f4073c8a4ddf3edd3e733c33
-  Redisable: 3743b1e6814255d527e921a309685063eadc55f3
   SQLCipher: 0b81a39b21247c559c52c3bd2234808e626c008b
   SQLiteORM: 9560a884cf1130e2a07fdf49175427c02b1513dc
-  Storage: 49ec35fd70028329f1895bc4b546b983f95d909e
+  Storage: bbf58c9524e5417e01b1022cbe0e6ad1ef216ccb
 
-PODFILE CHECKSUM: 3e9a28979aade5f798e8f96afe59c104720a993a
+PODFILE CHECKSUM: 282f66533f1f028e2b6d5e85f3f9f9e605187373
 
 COCOAPODS: 1.10.0

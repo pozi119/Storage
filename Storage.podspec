@@ -20,6 +20,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Storage/Classes/**/*'
   s.dependency 'SQLiteORM'
   s.dependency 'MMapKV'
-  s.dependency 'Redisable'
 
 end

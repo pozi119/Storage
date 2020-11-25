@@ -2,7 +2,7 @@
 import Foundation
 import Storage
 
-public struct User: Storable {
+public struct User: Equatable {
     var id: Int64
     var name: String
     var photo: String
