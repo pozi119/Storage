@@ -1,6 +1,6 @@
 
 Pod::Spec.new do |s|
-  s.name             = 'Storage'
+  s.name             = 'Storage.Redisable'
   s.version          = '0.1.0-beta1'
   s.summary          = 'A short description of Storage.'
   s.description      = <<-DESC
