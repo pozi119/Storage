@@ -17,8 +17,10 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.12'
   s.watchos.deployment_target = '3.0'
 
+  s.swift_version = '5.0'
+
   s.source_files = 'Storage/Classes/**/*'
-  s.dependency 'SQLiteORM'
-  s.dependency 'MMapKV'
+  s.dependency 'SQLiteORM', '~> 0.1.4-beta2'
+  s.dependency 'MMapKV', '~> 0.1.0-beta1'
 
 end

@@ -25,7 +25,7 @@ extension Orm: Redisable where T: Equatable {
         }
 
         let key = config.primaries.count == 1 ? config.primaries.first! : ""
-        guard key.count > 0 else {
+        if key.count == 0 {
             assert(false, "invalid redisable orm")
         }
         objc_setAssociatedObject(self, &AssociatedKey.redisableKey, key, .OBJC_ASSOCIATION_COPY_NONATOMIC)
