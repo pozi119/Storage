@@ -34,8 +34,13 @@ extension Orm: Redisable where T: Equatable {
 
     public func keyValue(of value: Value) -> (String, [String: Primitive]) {
         let result: (String, [String: Primitive]) = ("", [:])
-        guard let val = try? AnyEncoder.encode(value),
-              let _key = val[redisableKey] else { return result }
+        var val: [String: Primitive]?
+        if let value = value as? any Codable {
+            val = try? ManyEncoder().encode(value)
+        } else {
+            val = try? AnyEncoder.encode(value)
+        }
+        guard let val, let _key = val[redisableKey] else { return result }
         let key = String(describing: _key)
         return (key, val)
     }
@@ -115,7 +120,13 @@ extension Orm: Redisable where T: Equatable {
         var results: [(String, Value)] = []
         for dic in items {
             let k = String(describing: dic[redisableKey] ?? "")
-            if let v = try? AnyDecoder.decode(T.self, from: dic) {
+            var v: T?
+            if let u = T.self as? any Codable.Type {
+                v = try? ManyDecoder().decode(u.self, from: dic) as? T
+            } else {
+                v = try? AnyDecoder.decode(T.self, from: dic)
+            }
+            if let v {
                 results.append((k, v))
             }
         }
