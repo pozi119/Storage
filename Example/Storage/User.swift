@@ -1,6 +1,6 @@
 
 import Foundation
-import Storage
+import Storage_Redisable
 
 public struct User: Equatable {
     var id: Int64

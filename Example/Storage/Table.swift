@@ -8,7 +8,7 @@
 import Foundation
 import MMapKV
 import SQLiteORM
-import Storage
+import Storage_Redisable
 
 public extension Orm.MMKVStroage {
     convenience init(_ name: String, db: Database, primaries: [String], uniques: [String] = []) {

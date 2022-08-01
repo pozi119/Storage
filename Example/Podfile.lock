@@ -1,7 +1,7 @@
 PODS:
-  - AnyCoder (0.1.1-beta1):
+  - AnyCoder (0.1.1):
     - Runtime
-  - MMapKV (0.1.0-beta1):
+  - MMapKV (0.1.0):
     - AnyCoder (~> 0.1.1-beta1)
   - Runtime (2.2.2)
   - SQLCipher (4.4.1):
@@ -9,19 +9,19 @@ PODS:
   - SQLCipher/common (4.4.1)
   - SQLCipher/standard (4.4.1):
     - SQLCipher/common
-  - SQLiteORM (0.1.4-beta2):
-    - SQLiteORM/cipher (= 0.1.4-beta2)
-  - SQLiteORM/cipher (0.1.4-beta2):
+  - SQLiteORM (0.1.4):
+    - SQLiteORM/cipher (= 0.1.4)
+  - SQLiteORM/cipher (0.1.4):
     - SQLCipher
     - SQLiteORM/core
     - SQLiteORM/fts
     - SQLiteORM/util
-  - SQLiteORM/core (0.1.4-beta2):
+  - SQLiteORM/core (0.1.4):
     - AnyCoder (~> 0.1.1-beta1)
-  - SQLiteORM/fts (0.1.4-beta2):
+  - SQLiteORM/fts (0.1.4):
     - SQLiteORM/core
-  - SQLiteORM/util (0.1.4-beta2)
-  - Storage (0.1.0-beta1):
+  - SQLiteORM/util (0.1.4)
+  - Storage.Redisable (0.1.0):
     - MMapKV (~> 0.1.0-beta1)
     - SQLiteORM (~> 0.1.4-beta2)
 
@@ -30,7 +30,7 @@ DEPENDENCIES:
   - MMapKV (from `../../MMapKV`)
   - Runtime (from `https://github.com/wickwirew/Runtime.git`)
   - SQLiteORM (from `../../SQLiteORM`)
-  - Storage (from `../`)
+  - Storage.Redisable (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -45,7 +45,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/wickwirew/Runtime.git
   SQLiteORM:
     :path: "../../SQLiteORM"
-  Storage:
+  Storage.Redisable:
     :path: "../"
 
 CHECKOUT OPTIONS:
@@ -54,13 +54,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/wickwirew/Runtime.git
 
 SPEC CHECKSUMS:
-  AnyCoder: 193d30a23762ea2cc864107551a2c735868ba064
-  MMapKV: 7352add71fcd7892892922ac6f5ce9abd34c8255
+  AnyCoder: f7ff281fd899268567cee517c8a13ddacc023db5
+  MMapKV: 3537637fd66b1010287d69a3789ee6adbf830da5
   Runtime: 437172970c2fb5498ed14a7e2cdbcb8572954839
   SQLCipher: 0b81a39b21247c559c52c3bd2234808e626c008b
-  SQLiteORM: 2ec6521206a96725e5f7e1a413860ab08f7c7016
-  Storage: 5fa9b26cd52e617f166daea8f74bd5668d441ce9
+  SQLiteORM: 5a630786bae5e34ad23ff54856755035f4354530
+  Storage.Redisable: 85a08e8f236cc32019bf0bf33c6065adf07211af
 
-PODFILE CHECKSUM: f7c9a342b3cda39566359c6e5464b37dcdb1812b
+PODFILE CHECKSUM: 65a982fd48c3f6a6c52a4e7fbe36cd86b2636ac9
 
 COCOAPODS: 1.11.3
